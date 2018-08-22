@@ -9,24 +9,24 @@ computer.
 Retrieve the docker image via `docker pull`.
 
 ```
-% docker pull silviof/docker-borgbackup
+% docker pull knapoc/docker-borgbackup
 ```
 
 # How to run
 
 This backup system is controlled via borgctl script from this [repository].
 Alternatively the controlling script can and should be acquired via `docker run
---rm silviof/docker-borgbackup get_borgctl`. The used script must be the same
+--rm knapoc/docker-borgbackup get_borgctl`. The used script must be the same
 as the script in the container. Configuration is done via an ini-file. You can
-get an example ini file via `docker run --rm silviof/docker-borgbackup
+get an example ini file via `docker run --rm knapoc/docker-borgbackup
 get_ini`. For this you need the [shini] ini file parser located at
 `/usr/bin/shini.sh`. You can get a copy with `docker run --rm
-silviof/docker-borgbackup get_shini`.
+knapoc/docker-borgbackup get_shini`.
 
 ```bash
-docker run --rm silviof/docker-borgbackup get_borgctl > borgctl
-docker run --rm silviof/docker-borgbackup get_ini > borgbackup.ini
-docker run --rm silviof/docker-borgbackup get_shini > shini
+docker run --rm knapoc/docker-borgbackup get_borgctl > borgctl
+docker run --rm knapoc/docker-borgbackup get_ini > borgbackup.ini
+docker run --rm knapoc/docker-borgbackup get_shini > shini
 chmod u+x borgctl
 ```
 
@@ -82,7 +82,7 @@ Now we should initialize the backup store via `borgctl shell` command. After
 that we should be dropped into a container configured for work with borg.
 
     $ borgctl shell ~/borgbackup.ini
-    -+> sudo docker run -ti [...] silviof/docker-borgbackup do_shell
+    -+> sudo docker run -ti [...] knapoc/docker-borgbackup do_shell
     -+> borg environment loaded
     -+> $BORG_REPO and $BORG_PASSPHRASE are set
     $
@@ -128,7 +128,7 @@ The second step is to try to do the backup by hand. Using the `borgctl` script
 it is very simple. (example output)
 
     $ borgctl backup ~/borgbackup.ini
-    -+> sudo docker run [...] silviof/docker-borgbackup do_backup
+    -+> sudo docker run [...] knapoc/docker-borgbackup do_backup
 
     -+> BACKUP for 001 ...
     -+> borg create -s -v -C zlib,6 -e /development/archive   ::development-201510231842060200 /BACKUP//development
