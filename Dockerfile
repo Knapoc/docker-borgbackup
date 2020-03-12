@@ -1,6 +1,6 @@
 FROM debian:stretch
 
-ARG BORG_VERSION=1.1.10
+ARG BORG_VERSION=1.1.11
 
 WORKDIR /borg
 
